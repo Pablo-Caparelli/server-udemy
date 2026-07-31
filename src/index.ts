@@ -3,11 +3,16 @@ import server from "./server";
 
 const PORT = process.env.PORT || 4000;
 
-server.listen(PORT, () => {
-  console.log(
-    colors.cyan.bold(`✅ Server corriendo en http://localhost:${PORT}`)
-  );
-});
+// En desarrollo local sigue escuchando el puerto normalmente
+if (process.env.NODE_ENV !== "production") {
+  server.listen(PORT, () => {
+    console.log(
+      colors.cyan.bold(`✅ Server corriendo en http://localhost:${PORT}`),
+    );
+  });
+}
+
+export default server;
 
 // import { sumar } from "./server";
 // console.log("Desde index.ts");
