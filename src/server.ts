@@ -18,6 +18,7 @@ export async function connectDB() {
     console.log(colors.blue("Conexión exitosa a la BD"));
   } catch (error) {
     console.log(colors.red.bold("Hubo un error al conectar a la BD"));
+    console.error(error);
   }
 }
 
@@ -54,7 +55,7 @@ server.use("/api/products", router);
 server.use(
   "/docs",
   swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, swaggerUiOptions)
+  swaggerUi.setup(swaggerSpec, swaggerUiOptions),
 );
 
 export default server;
